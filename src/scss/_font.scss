@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'Alata';
+    src: url('../assets/fonts/Alata-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Cgeuropabd';
+    src: url('../assets/fonts/cgeuropabd.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poker';
+    src: url('../assets/fonts/PokerInOctober-Demo.woff') format('woff');
+}
+
+@font-face{
+    font-family: 'FontAwesome-b';
+    src: url('../assets/fonts/fa-brands-400.woff') format('woff');
+    src: url('../assets/fonts/fa-brands-400.woff2') format('woof2');
+}
+
+@font-face{
+    font-family: 'FontAwesome-r';
+    src: url('../assets/fonts/fa-regular-400.woff') format('woff');
+    src: url('../assets/fonts/fa-regular-400.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'FontAwesome-s';
+    src: url('../assets/fonts/fa-solid-900.woff') format('woff');
+    src: url('../assets/fonts/fa-solid-900.woff2') format('woff2');
+}
+
+.alataFt{
+    font-family: 'Alata', sans-serif;
+}
+
+.cgFt{
+    font-family: 'Cgeuropabd', sans-serif;
+}
+
+.pokerFt{
+    font-family: 'Poker', sans-serif;
+}
+
+.fab{
+    font-family: 'FontAwesome-b';
+}
+
+.far{
+    font-family: 'FontAwesome-r';
+}
+
+.fas{
+    font-family: 'FontAwesome-s';
+}
+
+// Colors
+$red: #e64c3c;
+$green:#027b11;
+$grey:#979797;
+
+.red{
+    color: $red;
+}
+
+.green{
+    color: $green;
+}
+
+.grey{
+    color: $grey;
+}
+
+.black{
+    color: black;
+}
+
+.white{
+    color: white;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+h1{
+    @extend .pokerFt;
+    font-weight: normal;
+    font-size: 56px;
+}
+
+h2{
+    @extend .cgFt;
+    font-size: 32px;
+    font-weight: normal;
+    @extend .mg-v-20;
+}
+
+h3{
+    @extend .cgFt;
+    font-size: 28px;
+    font-weight: normal;
+    @extend .mg-v-10;
+}

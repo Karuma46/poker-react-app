@@ -1,0 +1,52 @@
+#welcomewrap{
+    z-index: 100;
+    position: relative;
+}
+
+#welcome-header{
+    @extend .mg-50-auto, .text-center, .white ;
+    position: absolute;
+    h1{
+        font-size: 150px;
+        margin: 0;
+        line-height: 70px;
+    }
+    p{
+        font-size: 40px;
+        @extend .pokerFt;
+    }
+}
+
+#welcomeCards{
+    width: 100px;
+    margin: 100px auto;
+    @extend .fl-even ;
+    position: absolute;
+    flex-shrink: 0;
+    .card:first-child{
+        transform: rotate(-30deg);
+        bottom: -30px;
+        right: -20px;
+    }
+    .card:nth-child(2){
+        transform: rotate(-15deg);
+    }
+    .card:nth-child(3){
+        transform: rotate(15deg);
+        left: -20px;
+    }
+    .card:last-child{
+        transform: rotate(30deg);
+        bottom: -30px;
+        left: -40px;
+    }
+}
+
+.sidebar{
+    position: absolute;
+    height: 100vh;
+    width: 400px;
+    background-color: #fff;
+    right: 0; top: 0;
+    box-shadow: -2 0 2px rgba(0,0,0,0.4);
+}

@@ -1,0 +1,187 @@
+// Form elements
+
+.textIn{
+    background:none;
+    border: 2px solid $grey;
+    border-radius: 5px;
+    height: 48px; padding-left: 10px;
+    color: white;
+    @extend .alataFt;
+    font-size: 16px;
+    &:focus{
+        border-color: $red;
+        transition: .5s ease-in-out all linear;
+    }
+}
+
+
+.input2{
+    label{
+        @extend .alataFt ;
+        display: block;
+    }
+
+    input{
+        background: none;
+        min-width: 200px;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid $grey;
+        position: relative;
+        &::after{
+            content: '';
+            width: 20px;
+            height: 10px;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            background-color: red;
+        }
+    }
+}
+
+.button{
+    background:$red;
+    border: none;
+    height: 48px; min-width: 110px;
+    color: white;
+    border-radius: 5px;
+    @extend .alataFt ;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.round_btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    font-size: 25px;
+    padding: 0;cursor: pointer;
+    position: relative;
+    p{
+        position: absolute;
+        @extend .alataFt, .white;
+    }
+}
+
+
+.popup{
+    background: #fff;
+    width: 500px;
+    height: 250px;
+    padding: 20px;
+    box-shadow: 0,0,4px,rgba(0,0,0,0.5);
+    border-radius: 10px;
+    position: relative;
+    h3{
+        @extend .text-center;
+    }
+    &::after{
+        content: '\f00d';
+        @extend .fas ;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 20px;
+        display: block;
+        &:hover{
+            color: $red;
+        }
+    }
+}
+
+.inTurn{   
+    .avatarImg{
+        width: 90px;
+        height: 90px;
+        border-color: red;
+        transition: .3s ease-in-out all;
+    }
+    p{
+        color: $red;
+    }
+}
+
+.avatar{
+    .avatarImg{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid white;
+        transition: .3s ease-in-out all;
+        img{
+            width: 100%;
+        }
+    }
+    p{
+        @extend .cgFt, .text-center ;
+        color: white;
+        font-size: 22px;
+        margin: 0;
+    }
+    &:hover{
+        @extend .inTurn ;
+    }
+}
+
+
+
+#user{
+    position: relative;
+    &::before{
+        content: '\f0d7';
+        @extend .fas, .white ;
+        font-size: 20px;
+        position: absolute;
+        right: -20px;
+        top: 30px;
+    }
+    .av-menu{
+        background: white;
+        border-radius: 5px;
+        min-width: 100px;
+        padding: 10px;
+        box-shadow: 0,0,4px, rgba(0,0,0,0.5);
+        position: absolute;
+        top: 100%;
+        right: -20px;
+        span{
+            @extend .alataFt ;
+            text-align: right;
+            display: block;
+            padding: 5px 0px; 
+            position: relative;
+            &::after{
+                content: '';
+                height: 1px;
+                width: 0px;
+                background-color: $red;
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                transition: .2s ease-in-out all;
+            }
+            &:hover{
+                &::after{
+                    width: 90%;
+                }
+            }
+            a{
+                text-decoration: none;
+                color: black;
+                &:hover{
+                    color: $red;
+                }
+            }
+            &:last-child{
+                &::after{
+                    display: none;
+                }
+            }
+        }
+    }
+}
