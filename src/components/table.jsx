@@ -1,6 +1,6 @@
 import React, {useEffect}from 'react'
 import {Player, Card} from 'components/gameStuff' 
-
+import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 
 const Players = () =>{
     return(
@@ -38,19 +38,16 @@ const Hand = () =>{
 
     return(
         <>
-            <div id="hand">
-                <Card suit="diamond" rank="9" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-            </div>
+            <Droppable droppableId="1">
+            {(provided) => 
+                (<div id="hand" {...provided.droppableProps} innerRef={provided.innerRef}>
+                    <Card suit="diamond" rank="9" />
+                    <Card suit="club" rank="3" />
+                    <Card suit="heart" rank="4" />
+                    {provided.placeholder}
+                </div>)
+            }
+            </Droppable>
         </>
     )
 }
@@ -73,8 +70,10 @@ const Table = () =>{
     return(
         <>
             <Players />
-            <Hand />
-            <Stash />
+            <DragDropContext onDragEnd={() =>{}}>
+                <Hand />
+                <Stash />
+            </DragDropContext>
         </>
     )
 }
