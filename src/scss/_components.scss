@@ -1,5 +1,13 @@
 // Form elements
 
+form{
+    width: 90%;
+    @extend .mg-0-auto ;
+    h3{
+        @extend .text-center ;
+    }
+}
+
 .textIn{
     background:none;
     border: 2px solid $grey;
@@ -16,6 +24,9 @@
 
 
 .input2{
+    width: 100%;
+    @extend .mg-v-20;
+    position: relative;
     label{
         @extend .alataFt ;
         display: block;
@@ -24,6 +35,7 @@
     input{
         background: none;
         min-width: 200px;
+        width: 100%;
         height: 40px;
         border: none;
         border-bottom: 1px solid $grey;
@@ -37,6 +49,12 @@
             left: 0px;
             background-color: red;
         }
+    }
+    span{
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        right: 5px;
     }
 }
 
@@ -67,52 +85,31 @@
 }
 
 
-.popup{
-    background: #fff;
-    width: 500px;
-    height: 250px;
-    padding: 20px;
-    box-shadow: 0,0,4px,rgba(0,0,0,0.5);
-    border-radius: 10px;
-    position: relative;
-    h3{
-        @extend .text-center;
-    }
-    &::after{
-        content: '\f00d';
-        @extend .fas ;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-        font-size: 20px;
-        display: block;
-        &:hover{
-            color: $red;
-        }
-    }
-}
 
 .inTurn{   
     .avatarImg{
-        width: 90px;
-        height: 90px;
+        width: 70px;
+        height: 70px;
         border-color: red;
         transition: .3s ease-in-out all;
     }
     p{
         color: $red;
+        text-align: center;
+        width: 100%;
     }
 }
 
 .avatar{
+    width: 50px;
     .avatarImg{
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         overflow: hidden;
         border: 2px solid white;
         transition: .3s ease-in-out all;
+        cursor: pointer;
         img{
             width: 100%;
         }
@@ -123,23 +120,24 @@
         font-size: 22px;
         margin: 0;
     }
-    &:hover{
-        @extend .inTurn ;
-    }
 }
 
 
 
 #user{
-    position: relative;
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    cursor: pointer;
     &::before{
         content: '\f0d7';
         @extend .fas, .white ;
         font-size: 20px;
         position: absolute;
         right: -20px;
-        top: 30px;
+        top: 20px;
     }
+
     .av-menu{
         background: white;
         border-radius: 5px;
@@ -147,8 +145,9 @@
         padding: 10px;
         box-shadow: 0,0,4px, rgba(0,0,0,0.5);
         position: absolute;
-        top: 100%;
+        top: 150%;
         right: -20px;
+        display: none;
         span{
             @extend .alataFt ;
             text-align: right;
@@ -184,4 +183,201 @@
             }
         }
     }
+}
+
+.spinner{
+    position: absolute;
+    z-index: 9999;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// top bar
+
+#topbar{
+    position: absolute;
+    top: 0px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    
+    p{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        @extend .pokerFt, .red;
+        font-size: 30px;
+    }
+}
+
+#white-border{
+    position: absolute;
+    top:0px; left: 0px;
+    height: calc(100vh - 20px);
+    width: calc(100% - 20px);
+    border: 10px solid white;
+    z-index: 998;
+}
+
+
+#trapezoid {
+    border-top: 50px solid white;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    height: 0;
+    width: 500px;
+    span{
+        display: block;
+        width: 10px; height: 10px;
+        position: absolute;
+        background-repeat: no-repeat;
+    }
+    span:first-child{
+        top: 5px; left: 15px;
+        background-image: url('../assets/svg/spade.svg');
+    }
+    span:nth-child(2){
+        top:5px; right: 15px;
+        background-image: url('../assets/svg/diamond.svg');
+    }
+    span:nth-child(3){
+        bottom:5px; right:40px;
+        background-image: url('../assets/svg/club.svg');
+    }
+    span:last-child{
+        bottom: 5px; left: 40px;
+        background-image: url('../assets/svg/heart.svg');
+    }
+  }
+
+#menu{
+    position: absolute;
+    top: 50%; left: 20%;
+    transform: translateY(-50%);
+
+    .menu-item{
+        position: relative;
+        @extend .mg-v-50 ;
+        cursor: pointer;
+        p{
+            color: white;
+            @extend .cgFt ;
+            font-size: 50px;
+            margin: 20px 0px;
+            &::before{
+                content: '';
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 50%; transform: translateY(-50%);
+                left: -50px;
+                background-image: url('../assets/svg/diamond.svg');
+                background-repeat: no-repeat;
+            }
+        }
+
+        &::after{
+            content: '';
+            width: 0px;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            transition: .2s ease-in-out all;
+        }
+
+        &:hover{
+            &::after{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.popup-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    .popup-blur{
+        position: absolute;
+        width: 100%; height: 100vh;
+        background-color: rgba(0,0,0,0.3);
+        backdrop-filter: blur(5px);
+        z-index: 9;
+    }
+    .popup{
+        position: absolute;
+        min-width: 500px;
+        min-height: 300px;
+        background-color: #fff;
+        z-index: 99;
+        border-radius: 10px;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 0px;
+        span#close{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            &:hover{
+                @extend .red ;
+            }
+        }
+        h3{
+            @extend .cgFt, .text-center, .mg-v-20 ;
+            font-size: 30px;
+        }
+
+        form{
+            width: 80%;
+            margin: 0px auto;
+            button{
+                margin: 20px auto;
+            }
+        }
+    }
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    div{
+        width: 40%;
+    }
+    #profile-avatar{
+        position: relative;
+        .avatar{
+            width: 100%;
+            margin: 0px auto;
+            .avatarImg{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    #profile-stats{
+        height: 100%;
+        border-left: 1px solid $grey;
+        .stat{
+            width: 90%;
+            padding: 10px 0px;
+            margin: 0px auto;
+            border-bottom: 1px solid $grey;
+            box-sizing: border-box;
+            @extend .alataFt ;
+            font-size: 22px;
+            span{
+                @extend .red ;
+            }
+            &:last-child{
+                border-bottom: 0px;
+            }
+        }
+    }
+}
+
+#profilePopup{
+    display: none;
 }

@@ -1,27 +1,32 @@
 #welcomewrap{
     z-index: 100;
     position: relative;
+    height: 100vh;
 }
 
 #welcome-header{
-    @extend .mg-50-auto, .text-center, .white ;
+    @extend .text-center, .white ;
     position: absolute;
-    h1{
-        font-size: 150px;
-        margin: 0;
-        line-height: 70px;
-    }
-    p{
-        font-size: 40px;
-        @extend .pokerFt;
+    left: 50%; top: 40%;
+    width: calc(100%);
+    transform: translate(-50%, -50%);
+    #w-title{
+        h1{
+            font-size: 150px;
+            margin: 0;
+            line-height: 70px;
+        }
+        p{
+            font-size: 40px;
+            @extend .pokerFt;
+        }
     }
 }
 
 #welcomeCards{
     width: 100px;
-    margin: 100px auto;
     @extend .fl-even ;
-    position: absolute;
+    margin: 100px auto;
     flex-shrink: 0;
     .card:first-child{
         transform: rotate(-30deg);
@@ -42,11 +47,46 @@
     }
 }
 
-.sidebar{
+#welcome-btns{
+    width: 250px;
+    @extend .fl-btw ;position: relative;
+    left: 50%; top:100px;
+    transform: translateX(-50%);
+    span{
+        display: inline-block;
+        height: 48px;
+        width: 2px;
+        background: $grey;
+    }
+}
+
+#sidebar{
     position: absolute;
     height: 100vh;
     width: 400px;
     background-color: #fff;
-    right: 0; top: 0;
+    right: -400px; top: 0;
     box-shadow: -2 0 2px rgba(0,0,0,0.4);
+    transition: .3s ease-in-out all;
+    padding: 20px;
+    box-sizing: border-box;
+
+    form{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        button{
+            @extend .mg-v-50;
+            width: 100%;
+        }
+    }
+
+    span.close{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: block;
+        cursor: pointer;
+    }
 }
+

@@ -38,6 +38,7 @@ body{
         top: 0; left: 0;
         display: flex;
         flex-wrap: nowrap;
+        z-index: 1;
         .suitsbg{
             height: 100vh;
             width: 25%;
@@ -76,3 +77,77 @@ body{
         z-index: 10;
     }
 }
+
+// Game Layout
+
+#players{
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: 500px;
+    .player{
+        &:hover{
+            @extend .inTurn ;
+        }
+    }
+}
+
+#hand{
+    position: absolute;
+    bottom: 50px; left: 50px;
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px 0px;
+    .card{
+        flex-shrink: 0;
+        transition: .2s ease-in-out all;
+        position: relative;
+        .actions{
+            content: '';
+            position: absolute;
+            height: 50px;
+            width: 100%;
+            top: -60px;
+            display: none;
+            padding-bottom:20px ;
+            overflow: hidden;
+        }
+        &:hover{
+            margin-top: -40px;
+            .actions{
+                display: block;
+            }
+        }
+    }
+    .card:first-child{
+        margin-left: 0;
+    }
+
+}
+
+#stash{
+    position: absolute;
+    bottom: 50px; right: 50px;
+    display: flex;
+    width: 20%;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 20px 0px;
+    .card{
+        flex-shrink: 0;
+        transition: .2s ease-in-out all;
+        .actions{
+            display: none;
+        }
+    }
+    .card:last-child{
+        margin-left: 0;
+    }
+}
+

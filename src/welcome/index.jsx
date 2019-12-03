@@ -1,16 +1,31 @@
 import React, {useEffect} from 'react'
-import {showbg, showCards} from './helpers'
-import {input2} from 'components/inputs'
+import {showbg, showCards, showLogin, closeSidebar, showRegister} from './helpers'
+import {Input2, Button} from 'components/inputs'
 
 
 const Login = () =>{
     return (
         <>
-            <div className="sidebar">
-                <form action="">
-                    <input2 type="text" label="Username" ph="Username" icon="user" />
-                </form>
-            </div>
+            <form id="loginForm">
+                <h3>Login</h3>
+                <Input2 type="text" label="Username" ph="Use a unique username" icon="user" />
+                <Input2 type="password" label="Pin" ph="4 digit pin number" icon="lock" />
+                <Button title="Login"/>
+            </form>
+        </>
+    )
+}
+
+const Register = () =>{
+    return(
+        <>
+            <form id="registerForm">
+                <h3>Register</h3>
+                <Input2 type="email" label="Email Address" ph="Use a valid email address" icon="envelope"/>
+                <Input2 type="text" label="Username" ph="Use a unique username" icon="user"/>
+                <Input2 type="password" label="Pin" ph="4 digit pin number" icon="lock" />
+                <Button title="Register" />
+            </form>
         </>
     )
 }
@@ -19,13 +34,22 @@ const Login = () =>{
 const WelcomeDiv = () =>{
     return(
         <>
-        
             <div id="welcome-header">
-                <p>WELCOME <br/> TO </p>
-                <h1>POKER</h1>
+                <div id="w-title">
+                    <p>WELCOME <br/> TO </p>
+                    <h1>POKER</h1>
+                </div>
+
+                <div id="welcomeCards">
+                </div>
+
+                <div id="welcome-btns">
+                    <Button title="Login" onClick={showLogin} />
+                    <span></span>
+                    <Button title="Register" onClick={showRegister}></Button>
+                </div>
             </div>
-            <div id="welcomeCards">
-            </div>
+            
         </>
     )
 }
@@ -40,7 +64,14 @@ const Welcome = () =>{
         <>
             <div id="welcomewrap">
                 <WelcomeDiv/>
-                <Login />
+                <div id="sidebar">
+                    <span className="close" onClick={closeSidebar}>
+                        <i className="fas fa-times red"></i>
+                    </span>
+                    <Login />
+                    <Register />
+                </div>
+                
             </div>
         </>
     )
