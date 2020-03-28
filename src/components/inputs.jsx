@@ -18,10 +18,10 @@ export const Button = ({title, onClick}) => {
     )
 }
 
-export const Button2 = ({title, icon}) => {
+export const Button2 = ({title, icon, tooltip}) => {
     return(
         <>
-            <button className="round_btn" title={title}>
+            <button className="round_btn" title={tooltip}>
                 <span>
                     <i className={`fas fa-${icon} red`}></i>
                 </span>

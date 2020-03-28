@@ -18,7 +18,6 @@ function App() {
     <div className="App">
       <div id="wrapper">
           {/* <Welcome/> */}
-
           <Dash />
           {/* <Spinner/> */}
 

@@ -4,7 +4,7 @@ import Table from 'components/table'
 import {CreateLobbyPopup, JoinLobbyPopup} from 'components/popups'
 import {ShowPopup} from 'functions/popups'
 import {Button} from 'components/inputs'
-
+import {Players} from 'components/table'
 
 const Menu = () =>{
     return(
@@ -25,7 +25,8 @@ const Menu = () =>{
 
 const Waiting = () =>{
     return(
-        <>
+        <>  
+            <Players />
             <div id="menu">
                 <div>
                     <h2 className="white">Waiting for players to join...</h2>
@@ -42,10 +43,10 @@ const Dash = () =>{
             <div id="content">
                 <Topbar/>
                 {/* <Menu/> */}
-                <Waiting />
+                {/* <Waiting /> */}
                 <CreateLobbyPopup />
                 <JoinLobbyPopup />
-                {/* <Table/> */}
+                <Table/>
             </div>
         </>
     )

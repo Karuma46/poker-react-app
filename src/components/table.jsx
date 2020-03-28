@@ -1,14 +1,17 @@
 import React, {useEffect}from 'react'
-import {Player, Card} from 'components/gameStuff' 
+import {Player, Card, Pick} from 'components/gameStuff'
+import {Button2} from 'components/inputs'
 
 
-const Players = () =>{
+export const Players = () =>{
     return(
         <>
             <div id="players">
-                <Player name="Steve" />
+                <Player name="You" />
                 <Player name="Ann" />
                 <Player name="Kev" />
+                <Player name="Steve" />
+                <Player name="Ann" />
             </div>
         </>
     )
@@ -44,26 +47,48 @@ const Hand = () =>{
                 <Card suit="club" rank="A" />
                 <Card suit="heart" rank="4" />
                 <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
+    
             </div>
         </>
     )
 }
 
+
 const Stash = () =>{
     return(
-        <>
+        <>  
+            <span id="gameclock">
+                <p className="alataFt white">
+                    0:40
+                </p>
+            </span>
             <div id="stash">
                 <Card suit="spade" rank="5" />
                 <Card suit="heart" rank="Q" />
                 <Card suit="club" rank="K" />
                 <Card suit="diamond" rank="Q" />
-                <Card suit="spade" rank="K" />
+            </div>
+        </>
+    )
+}
+
+const Picker = () => {
+    return(
+        <>
+            <div id="picker">
+                <Pick />
+            </div>
+        </>
+    )
+}
+
+const Actions = () =>{
+    return(
+        <>
+            <div id="actions">
+                <Button2 icon="hand-paper" tooltip="Kadi!"/>
+                <Button2 icon="forward" tooltip="Next" />
+                <Button2 icon="undo-alt" tooltip="Undo" />
             </div>
         </>
     )
@@ -75,6 +100,8 @@ const Table = () =>{
             <Players />
             <Hand />
             <Stash />
+            <Picker />
+            <Actions />
         </>
     )
 }
