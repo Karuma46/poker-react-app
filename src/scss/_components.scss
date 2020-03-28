@@ -129,16 +129,8 @@ form{
     top: 40px;
     right: 60px;
     cursor: pointer;
-    &::before{
-        content: '\f0d7';
-        @extend .fas, .white ;
-        font-size: 20px;
-        position: absolute;
-        right: -20px;
-        top: 20px;
-    }
 
-    .av-menu{
+    #user_menu{
         background: white;
         border-radius: 5px;
         min-width: 100px;

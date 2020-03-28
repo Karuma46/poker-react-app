@@ -1,6 +1,7 @@
 import React from 'react'
 import {Input2, Button} from 'components/inputs'
 import AvatarImg from 'assets/img/avatar.png'
+import {ClosePopup} from 'functions/popups'
 
 export const ProfilePopup = () =>{
     
@@ -49,13 +50,13 @@ export const ProfilePopup = () =>{
     )
 }
 
-export const LobbyPopup = () =>{
+export const CreateLobbyPopup = () =>{
     return(
         <>
-            <div className="popup-wrap">
+            <div className="popup-wrap" id="createLobby" style={{display:'none'}}>
                 <div className="popup-blur"></div>
                 <div className="popup">
-                    <span id="close"> <i className="fas fa-times"></i> </span>
+                    <span id="close" onClick={()=>ClosePopup('createLobby')}> <i className="fas fa-times"></i> </span>
 
                     <h3>Create a Lobby</h3>
 
@@ -63,6 +64,26 @@ export const LobbyPopup = () =>{
                         <Input2 label="Name" ph="Give the lobby a name" icon="hotel" />
                         <Input2 label="Pin" ph="4 digit pin members use to join" icon="lock" />
                         <Button title="Create" />
+                    </form>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export const JoinLobbyPopup = () =>{
+    return(
+        <>
+            <div className="popup-wrap" id="joinLobby" style={{display:'none'}} >
+                <div className="popup-blur"></div>
+                <div className="popup">
+                    <span id="close" onClick={()=>ClosePopup('joinLobby')} ><i className="fas fa-times"></i></span>
+                    <h3>Join Lobby</h3>
+
+                    <form>
+                        <Input2 label="Name" ph="Lobby name" icon="hotel" />
+                        <Input2 label="Pin" ph="4 digit pin" icon="lock" />
+                        <Button title="Join" />
                     </form>
                 </div>
             </div>

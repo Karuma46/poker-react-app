@@ -1,45 +1,24 @@
 import React from 'react'
 import AvatarImg from 'assets/img/avatar.png'
 import {ProfilePopup} from 'components/popups'
+import {ShowPopup} from 'functions/popups'
 
 export const Avatar = () =>{
-
-    const showMenu = () =>{
-        const user_menu = document.getElementById('user_menu')
-        user_menu.setAttribute('style', 'display:block')
-        console.log('user')
-    }
-
-    const showProfile = () =>{
-        const profile = document.getElementById('profilePopup')
-        profile.setAttribute('style', 'display:block')
-          
-        const user_menu = document.getElementById('user_menu')
-        user_menu.setAttribute('style', 'display:none')
-    }
-
-    // var specifiedElement = document.getElementById('user_menu');
-    // document.addEventListener('click', function(event) {
-    // var isClickInside = specifiedElement.contains(event.target);
-    // if (!isClickInside) {
-    //     specifiedElement.setAttribute('style', 'display:block');
-    // }
-    // });
 
     return(
         <>
             <div className="avatar" id="user">
-                <div className="avatarImg" id="userAvatar" onClick={showMenu}>
+                <div className="avatarImg" id="userAvatar" onClick={()=>ShowPopup('user_menu')}>
                     <img src={AvatarImg} alt="steve's avatar" />
                 </div>
 
                 <div className="av-menu" id="user_menu">
                     <span>
-                        <a href="#" onClick={showProfile}>My Profile</a>
+                        <a onClick={()=>ShowPopup('profilePopup')}>My Profile</a>
                     </span>
 
                     <span>
-                        <a href="#">Logout</a>
+                        <a >Logout</a>
                     </span>
                 </div>
             </div>

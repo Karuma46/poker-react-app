@@ -1,20 +1,36 @@
 import React from 'react'
 import Topbar from 'components/topbar'
 import Table from 'components/table'
-
+import {CreateLobbyPopup, JoinLobbyPopup} from 'components/popups'
+import {ShowPopup} from 'functions/popups'
+import {Button} from 'components/inputs'
 
 
 const Menu = () =>{
     return(
         <>
             <div id="menu">
-                <div className="menu-item">
+                <div className="menu-item" onClick={()=>ShowPopup('joinLobby')} >
                     <p>Join a private game</p>
                 </div>
 
-                <div className="menu-item">
+                <div className="menu-item" onClick={()=>ShowPopup('createLobby')} >
                     <p>Host a private game</p>
                 </div>
+            </div>
+        </>
+    )
+}
+
+
+const Waiting = () =>{
+    return(
+        <>
+            <div id="menu">
+                <div>
+                    <h2 className="white">Waiting for players to join...</h2>
+                </div>
+                <Button title="Start Game" />
             </div>
         </>
     )
@@ -25,8 +41,11 @@ const Dash = () =>{
         <>
             <div id="content">
                 <Topbar/>
-                {/* <Menu/>  */}
-                <Table/>
+                {/* <Menu/> */}
+                <Waiting />
+                <CreateLobbyPopup />
+                <JoinLobbyPopup />
+                {/* <Table/> */}
             </div>
         </>
     )
