@@ -1,7 +1,7 @@
-import React, {useEffect}from 'react'
+import React, {useEffect, useState}from 'react'
 import {Player, Card, Pick} from 'components/gameStuff'
-import {Button2} from 'components/inputs'
-
+import {Button2, Button} from 'components/inputs'
+import Confetti from 'react-dom-confetti'
 
 export const Players = () =>{
     return(
@@ -94,9 +94,72 @@ const Actions = () =>{
     )
 }
 
+const ConfettiBlast = () =>{
+
+    const [loading, setLoading] = useState()
+
+    const mkBlast = () => {
+        setLoading(true)
+        setTimeout(() => setLoading(false), 1000);
+    }
+
+    const configLeft = {
+        angle: "45",
+        spread: "125",
+        startVelocity: "100",
+        elementCount: "200",
+        dragFriction: 0.1,
+        duration: "7990",
+        stagger: 0,
+        width: "10px",
+        height: "10px",
+        colors: ["#000", "#f00", "#fff"]
+    }
+
+
+    const configRight = {
+        angle: "135",
+        spread: "125",
+        startVelocity: "100",
+        elementCount: "200",
+        dragFriction: 0.1,
+        duration: "7990",
+        stagger: 0,
+        width: "10px",
+        height: "10px",
+        colors: ["#000", "#f00", "#fff"]
+    }
+
+    return(
+        <>  
+            <div id="blast">
+
+                <div id="winner">
+                    <h2 className="white">Game Over</h2>
+                    <h1 className="alataFt red">STEVE WINS!</h1>
+                </div>
+
+                <div id="blast1">
+                    <Confetti active={loading} config={configLeft } />
+                </div>
+
+                <div id="blast2">
+                    <Confetti active={loading} config={configRight} />
+                </div>
+
+                <Button title="Blast!" onClick={mkBlast} />
+
+            </div>
+        </>
+    )
+}
+
+
+
 const Table = () =>{
     return(
         <>
+            <ConfettiBlast />
             <Players />
             <Hand />
             <Stash />
