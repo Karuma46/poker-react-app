@@ -14,11 +14,11 @@ export const Avatar = () =>{
 
                 <div className="av-menu" id="user_menu">
                     <span>
-                        <a onClick={()=>ShowPopup('profilePopup')}>My Profile</a>
+                        <span onClick={()=>ShowPopup('profilePopup')}>My Profile</span>
                     </span>
 
                     <span>
-                        <a >Logout</a>
+                        <span >Logout</span>
                     </span>
                 </div>
             </div>

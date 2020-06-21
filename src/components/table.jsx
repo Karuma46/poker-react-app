@@ -2,6 +2,7 @@ import React, {useEffect, useState}from 'react'
 import {Player, Card, Pick} from 'components/gameStuff'
 import {Button2, Button} from 'components/inputs'
 import Confetti from 'react-dom-confetti'
+import $ from 'jquery'
 
 export const Players = () =>{
     return(
@@ -24,7 +25,7 @@ const Hand = () =>{
         var cards = document.getElementById("hand").childElementCount;
         var eachCardW = w/(cards + 1)
         var ml = 200 - (eachCardW)
-        console.log(cards, w, eachCardW, ml)
+        // console.log(cards, w, eachCardW, ml)
 
         var els = document.querySelectorAll('.card');
         for (var i=0; i < els.length; i++) {
@@ -53,7 +54,6 @@ const Hand = () =>{
     )
 }
 
-
 const Stash = () =>{
     return(
         <>  
@@ -73,6 +73,8 @@ const Stash = () =>{
 }
 
 const Picker = () => {
+    
+
     return(
         <>
             <div id="picker">
@@ -116,7 +118,6 @@ const ConfettiBlast = () =>{
         colors: ["#000", "#f00", "#fff"]
     }
 
-
     const configRight = {
         angle: "135",
         spread: "125",
@@ -130,13 +131,36 @@ const ConfettiBlast = () =>{
         colors: ["#000", "#f00", "#fff"]
     }
 
+    const flash = (el) =>{
+        if(el.classList.contains("redFlash")){
+            el.classList.add('whiteFlash')
+            el.classList.remove('redFlash')
+        } else {
+            el.classList.add('redFlash')
+            el.classList.remove('whiteFlash')
+        }
+    }
+    
+
+    useEffect(() => {
+        var el = document.getElementById('flashyText')
+        mkBlast()
+        const testInterval = setInterval(() => {
+            flash(el)
+        }, 300)
+
+        const confetti = setInterval(() => {
+            mkBlast()
+        }, 5000);
+    },[])
+
     return(
         <>  
             <div id="blast">
 
                 <div id="winner">
                     <h2 className="white">Game Over</h2>
-                    <h1 className="alataFt red">STEVE WINS!</h1>
+                    <h1 className="alataFt redFlash" id="flashyText">STEVE WINS!</h1>
                 </div>
 
                 <div id="blast1">
@@ -147,20 +171,18 @@ const ConfettiBlast = () =>{
                     <Confetti active={loading} config={configRight} />
                 </div>
 
-                <Button title="Blast!" onClick={mkBlast} />
+                <Button title="New Game" />
 
             </div>
         </>
     )
 }
 
-
-
 const Table = () =>{
     return(
         <>
-            <ConfettiBlast />
-            <Players />
+            {/* <ConfettiBlast /> */}
+            {/* <Players /> */}
             <Hand />
             <Stash />
             <Picker />

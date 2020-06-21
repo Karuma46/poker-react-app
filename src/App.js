@@ -5,9 +5,6 @@ import {showbg} from 'welcome/helpers'
 
 import Spinner from 'components/spinner' 
 
-
-
-
 function App() {
   useEffect(() =>{
     showbg()
@@ -17,10 +14,9 @@ function App() {
   return (
     <div className="App">
       <div id="wrapper">
+          {/* <Spinner/> */}
           {/* <Welcome/> */}
           <Dash />
-          {/* <Spinner/> */}
-
       </div>
     </div>
   );
