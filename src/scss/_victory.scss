@@ -44,10 +44,12 @@
     .redFlash{
         color: $red;
         text-shadow: 5px 5px 20px $red;
+        transition: .1s all ease-in-out;
     }
 
     .whiteFlash{
         color: white;
         text-shadow: 5px 5px 20px white;
+        transition: .1s all ease-in-out;
     }
 }

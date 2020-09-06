@@ -1,8 +1,10 @@
-import React, {useEffect, useState}from 'react'
+import React, {useEffect, useState} from 'react'
 import {Player, Card, Pick} from 'components/gameStuff'
 import {Button2, Button} from 'components/inputs'
-import Confetti from 'react-dom-confetti'
-import $ from 'jquery'
+import Confetti from 'components/confetti'
+import Loading from 'components/spinner'
+import {ShowPopup} from 'functions/popups'
+import {ExitGamePopup, GameInfoPopup} from 'components/popups'
 
 export const Players = () =>{
     return(
@@ -25,30 +27,28 @@ const Hand = () =>{
         var cards = document.getElementById("hand").childElementCount;
         var eachCardW = w/(cards + 1)
         var ml = 200 - (eachCardW)
-        // console.log(cards, w, eachCardW, ml)
 
         var els = document.querySelectorAll('.card');
         for (var i=0; i < els.length; i++) {
             if(i!== 0){
                 els[i].setAttribute("style", "margin-left:-"+ml+"px");
             }
-            
         }
     }
-
     useEffect(() => {
         arrangeCards()
     }, [])
 
     return(
-        <>
+        <>  
+            
             <div id="hand">
-                <Card suit="diamond" rank="9" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-                <Card suit="heart" rank="4" />
-                <Card suit="club" rank="A" />
-    
+                <h4 className="white">Your Hand:</h4>
+                <div id="handWrap"> 
+                    <Card suit="diamond" rank="9" />
+                    <Card suit="heart" rank="4" />
+                    <Card suit="club" rank="A" />
+                </div>
             </div>
         </>
     )
@@ -59,7 +59,7 @@ const Stash = () =>{
         <>  
             <span id="gameclock">
                 <p className="alataFt white">
-                    0:40
+                    Game Clock<span>: .40s</span>
                 </p>
             </span>
             <div id="stash">
@@ -73,11 +73,12 @@ const Stash = () =>{
 }
 
 const Picker = () => {
-    
+    const addCard = () => {
 
+    }
     return(
         <>
-            <div id="picker">
+            <div id="picker" onClick={addCard}>
                 <Pick />
             </div>
         </>
@@ -85,6 +86,11 @@ const Picker = () => {
 }
 
 const Actions = () =>{
+
+    const ToggleGame = () =>{
+        
+    }
+
     return(
         <>
             <div id="actions">
@@ -92,101 +98,53 @@ const Actions = () =>{
                 <Button2 icon="forward" tooltip="Next" />
                 <Button2 icon="undo-alt" tooltip="Undo" />
             </div>
-        </>
-    )
-}
 
-const ConfettiBlast = () =>{
+            <div id="gameOptions">
+                <span onClick={() => ShowPopup('exitGame')} >
+                    <i className="fas fa-sign-out-alt white"></i>
+                </span>
 
-    const [loading, setLoading] = useState()
+                <span onClick={() => ToggleGame} >
+                    <i className="fas fa-play white"></i>
+                </span>
 
-    const mkBlast = () => {
-        setLoading(true)
-        setTimeout(() => setLoading(false), 1000);
-    }
-
-    const configLeft = {
-        angle: "45",
-        spread: "125",
-        startVelocity: "100",
-        elementCount: "200",
-        dragFriction: 0.1,
-        duration: "7990",
-        stagger: 0,
-        width: "10px",
-        height: "10px",
-        colors: ["#000", "#f00", "#fff"]
-    }
-
-    const configRight = {
-        angle: "135",
-        spread: "125",
-        startVelocity: "100",
-        elementCount: "200",
-        dragFriction: 0.1,
-        duration: "7990",
-        stagger: 0,
-        width: "10px",
-        height: "10px",
-        colors: ["#000", "#f00", "#fff"]
-    }
-
-    const flash = (el) =>{
-        if(el.classList.contains("redFlash")){
-            el.classList.add('whiteFlash')
-            el.classList.remove('redFlash')
-        } else {
-            el.classList.add('redFlash')
-            el.classList.remove('whiteFlash')
-        }
-    }
-    
-
-    useEffect(() => {
-        var el = document.getElementById('flashyText')
-        mkBlast()
-        const testInterval = setInterval(() => {
-            flash(el)
-        }, 300)
-
-        const confetti = setInterval(() => {
-            mkBlast()
-        }, 5000);
-    },[])
-
-    return(
-        <>  
-            <div id="blast">
-
-                <div id="winner">
-                    <h2 className="white">Game Over</h2>
-                    <h1 className="alataFt redFlash" id="flashyText">STEVE WINS!</h1>
-                </div>
-
-                <div id="blast1">
-                    <Confetti active={loading} config={configLeft } />
-                </div>
-
-                <div id="blast2">
-                    <Confetti active={loading} config={configRight} />
-                </div>
-
-                <Button title="New Game" />
+                <span onClick={() => ShowPopup('gameInfo')} >
+                    <i className="fas fa-info white"></i>
+                </span>
 
             </div>
+            <GameInfoPopup />
+            <ExitGamePopup />
         </>
     )
 }
 
-const Table = () =>{
+const Game = () =>{
     return(
         <>
-            {/* <ConfettiBlast /> */}
-            {/* <Players /> */}
             <Hand />
             <Stash />
             <Picker />
             <Actions />
+        </>
+    )
+}
+
+const Table = () =>{    
+
+    const [game, setGame] = useState({
+        ready: true
+    })
+
+    return(
+        <>
+            {
+                game.ready ? (
+                    <Game />
+                ) : (
+                    <Loading text="Loading Game. Please Wait..." />
+                )
+            }
         </>
     )
 }

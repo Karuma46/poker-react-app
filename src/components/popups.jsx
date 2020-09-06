@@ -90,3 +90,46 @@ export const JoinLobbyPopup = () =>{
         </>
     )
 }
+
+export const ExitGamePopup = () => {
+
+    const closeGame = () => {
+        window.location.href = '/dash'
+    }
+
+    return(
+        <>
+            <div className="popup-wrap" id="exitGame" style={{display:'none'}} >
+                <div className="popup-blur"></div>
+                <div className="popup">
+                    <span id="close" onClick={()=>ClosePopup('exitGame')} ><i className="fas fa-times"></i></span>
+                    <h3>Exit Game?</h3>
+                    <p>Are you sure? All progress will be lost.</p>
+                    <form className="fl-btw" onSubmit={(e) => e.preventDefault()}>
+                        <Button title="Exit" onClick={closeGame} />
+                        <Button title="Cancel" onClick={()=>{ClosePopup('exitGame')}} />
+                    </form>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+export const GameInfoPopup = () => {
+    return(
+        <>
+            <div className="popup-wrap" id="gameInfo" style={{display:'none'}} >
+                <div className="popup-blur"></div>
+                <div className="popup">
+                    <span id="close" onClick={()=>ClosePopup('gameInfo')} ><i className="fas fa-times"></i></span>
+                    <h3>Game Info</h3>
+                    <p>Instructions on how to play.</p>
+                    <form action="">
+                        <Button title="Okay" onClick={()=>{ClosePopup('gameInfo')}} />               
+                    </form>
+                </div>
+            </div>
+        </>
+    )
+}

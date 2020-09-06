@@ -6,7 +6,7 @@ import {Input2, Button} from 'components/inputs'
 const Login = () =>{
     return (
         <>
-            <form id="loginForm">
+            <form id="loginForm" onSubmit={(e) => {e.preventDefault(); window.location.href = '/dash'}}>
                 <h3>Login</h3>
                 <Input2 type="text" label="Username" ph="Use a unique username" icon="user" />
                 <Input2 type="password" label="Pin" ph="4 digit pin number" icon="lock" />
@@ -19,7 +19,7 @@ const Login = () =>{
 const Register = () =>{
     return(
         <>
-            <form id="registerForm">
+            <form id="registerForm" onSubmit={(e) => {e.preventDefault() ; window.location.href = '/dash'}}>
                 <h3>Register</h3>
                 <Input2 type="email" label="Email Address" ph="Use a valid email address" icon="envelope"/>
                 <Input2 type="text" label="Username" ph="Use a unique username" icon="user"/>

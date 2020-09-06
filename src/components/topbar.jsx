@@ -18,7 +18,7 @@ export const Avatar = () =>{
                     </span>
 
                     <span>
-                        <span >Logout</span>
+                        <span onClick={() => window.location.href = '/'}>Logout</span>
                     </span>
                 </div>
             </div>

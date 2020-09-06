@@ -320,6 +320,10 @@ form{
             font-size: 30px;
         }
 
+        p{
+            @extend .alataFt, .text-center;
+        }
+
         form{
             width: 80%;
             margin: 0px auto;
